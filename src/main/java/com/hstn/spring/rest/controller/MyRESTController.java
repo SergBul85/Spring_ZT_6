@@ -4,10 +4,7 @@ import com.hstn.spring.rest.entity.Employee;
 import com.hstn.spring.rest.exception_headling.NoSuchEmployeeException;
 import com.hstn.spring.rest.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,7 +33,9 @@ public class MyRESTController {
         return employee;
     }
 
-
-
-
+    @PostMapping("/employees")
+    public Employee addNewEmployee(@RequestBody Employee employee) {
+        employeeService.saveEmployees(employee);
+        return employee;
+    }
 }
