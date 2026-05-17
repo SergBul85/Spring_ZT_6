@@ -3,9 +3,7 @@ package com.hstn.spring.rest.controller;
 import com.hstn.spring.rest.entity.Employee;
 import com.hstn.spring.rest.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +18,12 @@ public class MyRESTController {
     @GetMapping("/employees")
     public List<Employee> showAllEmployees() {
         List<Employee> employees = employeeService.getAllEmployees();
-        employees.forEach(System.out::println);
         return employees;
+    }
+
+    @GetMapping("/employees/{employeeId}")
+    public Employee getEmployee(@PathVariable("employeeId") int id) {
+        return employeeService.getEmployee(id);
     }
 
 }
